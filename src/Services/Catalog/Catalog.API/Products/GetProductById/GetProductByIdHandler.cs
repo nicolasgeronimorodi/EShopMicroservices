@@ -15,6 +15,8 @@ internal class GetProductByIdQueryHandler
         {
             throw new ProductNotFoundException();
         }
+        // TODO: Map to intermediate data type that doesnt expose db structure information
+
         return new GetProductByIdResult(product);
     }
 }

@@ -3,6 +3,7 @@ namespace Catalog.API.Products.GetProducts;
 
 //public record GetProductsRequest();
 // TODO: Can´t map GetProductsQuery to GetProductsRequest, because GetProductsQuery has no properties.
+// TODO: The reason for the commented record class, according to the instructor is that the request object would be empty but it is a best practice to mark a request record class
 
 public record GetProductsResponse(IEnumerable<Product> Products); 
 //TODO: Shouldn´t this be a list of ProductDto instead of Product? We don´t want to expose the internal Product entity directly in the API response.

@@ -12,5 +12,7 @@ internal class GetProductsQueryHandler(IDocumentSession session,
 
         var products = await session.Query<Product>().ToListAsync(cancellationToken);
         return new GetProductsResult(products);
+        // TODO: Map to intermediate data type that doesnt expose db structure information
+
     }
 }
