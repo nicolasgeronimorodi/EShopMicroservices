@@ -10,7 +10,8 @@ public class GetProductByCategoryEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products/category/${category}", async (String category, ISender sender) =>
+        app.MapGet("/products/category/{category}", 
+            async (String category, ISender sender) =>
         {
             var result = await sender.Send(new GetProductByCategoryQuery(category));
             var response = result.Adapt<GetProductByCategoryResponse>();
