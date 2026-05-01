@@ -29,7 +29,7 @@ public class UpdateProductEndpoint : ICarterModule
             .Produces<UpdateProductResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status404NotFound)
-            .WithSummary("Creates a new product")
-            .WithDescription("Creates a new product with the provided details and returns the created product's ID.");
+            .WithSummary("Updates a product")
+            .WithDescription("Updates a product with the provided details and returns the updated product's ID.");
     }
 }
