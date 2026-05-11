@@ -10,6 +10,20 @@ public record UpdateProductCommand(
     ) : ICommand<UpdateProductResult>;
 
 public record UpdateProductResult(bool IsSuccess);
+
+public class UpdateProductCommandHander : AbstractValidator<UpdateProductCommand>
+{
+    public UpdateProductCommandHander()
+    {
+        RuleFor(cmd => cmd.Id).NotEmpty().WithMessage("Product ID is required");
+        RuleFor(cmd => cmd.Name)
+            .NotEmpty().WithMessage("Product Name is required")
+            .Length(2, 150).WithMessage("Name must be between 2 and 150 characters");
+        RuleFor(command => command.Price)
+            .GreaterThan(0).WithMessage("Price must be greater than 0");
+    }
+}
+
 internal class UpdateProductCommandHandler 
     (IDocumentSession session, ILogger<UpdateProductCommandHandler> logger)
     : ICommandHandler<UpdateProductCommand, UpdateProductResult>
@@ -20,7 +34,7 @@ internal class UpdateProductCommandHandler
         var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
         if (product == null)
         {
-            throw new ProductNotFoundException();
+            throw new ProductNotFoundException(command.Id);
         }
         product.Name = command.Name;
         product.Category = command.Category;

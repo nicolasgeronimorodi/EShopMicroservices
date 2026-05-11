@@ -13,7 +13,7 @@ internal class GetProductByIdQueryHandler
         var product = await session.LoadAsync<Product>(query.Id, cancellationToken);
         if (product is null)
         {
-            throw new ProductNotFoundException();
+            throw new ProductNotFoundException(query.Id);
         }
         // TODO: Map to intermediate data type that doesnt expose db structure information
 
