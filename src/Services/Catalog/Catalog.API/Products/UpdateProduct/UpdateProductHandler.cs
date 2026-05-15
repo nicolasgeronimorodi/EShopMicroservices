@@ -11,9 +11,9 @@ public record UpdateProductCommand(
 
 public record UpdateProductResult(bool IsSuccess);
 
-public class UpdateProductCommandHander : AbstractValidator<UpdateProductCommand>
+public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
 {
-    public UpdateProductCommandHander()
+    public UpdateProductCommandValidator()
     {
         RuleFor(cmd => cmd.Id).NotEmpty().WithMessage("Product ID is required");
         RuleFor(cmd => cmd.Name)
