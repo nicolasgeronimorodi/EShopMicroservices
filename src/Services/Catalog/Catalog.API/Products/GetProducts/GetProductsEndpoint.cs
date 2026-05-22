@@ -1,10 +1,7 @@
 ﻿
 namespace Catalog.API.Products.GetProducts;
 
-//public record GetProductsRequest();
-// TODO: Can´t map GetProductsQuery to GetProductsRequest, because GetProductsQuery has no properties.
-// TODO: The reason for the commented record class, according to the instructor is that the request object would be empty but it is a best practice to mark a request record class
-
+public record GetProductsRequest(int? PageNumber = 1, int? PageSize = 10);
 public record GetProductsResponse(IEnumerable<Product> Products); 
 //TODO: Shouldn´t this be a list of ProductDto instead of Product? We don´t want to expose the internal Product entity directly in the API response.
 
@@ -12,9 +9,10 @@ public class GetProductsEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (ISender sender) =>
+        app.MapGet("/products", async ([AsParameters] GetProductsRequest request, ISender sender) =>
         {
-            var result = await sender.Send(new GetProductsQuery());
+            var query = request.Adapt<GetProductsQuery>();
+            var result = await sender.Send(query);
             var response = result.Adapt<GetProductsResponse>();
             return Results.Ok(response);
         })
