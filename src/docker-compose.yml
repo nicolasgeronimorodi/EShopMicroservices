@@ -5,7 +5,10 @@ services:
 
   basketdb:
     image: postgres:16.10
-    
+  
+  distributedcache:
+    image: redis
+
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
