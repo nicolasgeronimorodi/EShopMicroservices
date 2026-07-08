@@ -51,6 +51,7 @@ public class DiscountService
 
     public async override Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
     {
+        // TODO: Chequear si hay implementaciones mejoras y mas limpias respecto a retornar un Success hardcodeado en true.
         var coupon = await dbContext
             .Coupons
             .FirstOrDefaultAsync(x => x.ProductName == request.ProductName);
