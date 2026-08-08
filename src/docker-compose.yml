@@ -30,7 +30,6 @@ services:
       context: .
       dockerfile: Services/Discount/Discount.Grpc/Dockerfile
 
-
 volumes:
   postgres_catalog:
   postgres_basket:
