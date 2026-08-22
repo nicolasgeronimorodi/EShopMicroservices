@@ -13,8 +13,11 @@
 
   <ItemGroup>
     <Folder Include="Orders\EventHandlers\" />
-    <Folder Include="Data\" />
     <Folder Include="Orders\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.20" />
   </ItemGroup>
 
 </Project>
