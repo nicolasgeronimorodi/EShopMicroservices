@@ -11,7 +11,7 @@ public class DeleteOrderCommandValidator : AbstractValidator<DeleteOrderCommand>
 
 	public DeleteOrderCommandValidator()
 	{
-		RuleFor(x => x.Id).NotEmpty().WithMessage("OrderId is required");
+		RuleFor(x => x.OrderId).NotEmpty().WithMessage("OrderId is required");
 	}
 
 }
