@@ -7,8 +7,6 @@ namespace Ordering.API.Endpoints;
 // -Constructs a GetOrdersQuery
 // -Retrieves the data and returns it in a paginated format
 
-//public record GetOrdersRequest(PaginationRequest PaginationRequest);
-//TODO: chequear si funciona la request usando el tipo GetOrdersRequest en lugar de PaginationRequest
 public record GetOrdersResponse(PaginatedResult<OrderDto> Orders);
 
 public class GetOrders : ICarterModule

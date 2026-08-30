@@ -8,7 +8,6 @@ namespace Ordering.API.Endpoints;
 // -Sends the command using MediatR
 // -Returns a success or not found response
 
-//public record DeleteOrderRequest(Guid Id);
 public record DeleteOrderResponse(bool IsSuccess);
 
 public class DeleteOrder : ICarterModule

@@ -6,7 +6,6 @@ namespace Ordering.API.Endpoints;
 // -Uses a GetOrdersByCustomerQuery to fetch orders.
 // -Retrieves the list of orders for that customer.
 
-//public record GetOrdersByCustomerRequest(Guid CustomerId);
 public record GetOrdersByCustomerResponse(IEnumerable<OrderDto> Orders);
 
 public class GetOrdersByCustomer : ICarterModule
